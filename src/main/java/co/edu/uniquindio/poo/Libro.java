@@ -6,7 +6,7 @@ public class Libro {
     private String titulo, codigo, isbn, autor, editorial;
     private int unidadesDisponibles;
     private LocalDate fecha;
-    private boolean estado;
+    private Estado estado;
 
     /**
      * Método constructor de la clase Libro
@@ -178,6 +178,19 @@ public class Libro {
     }
     // --------------------------------------------------------------------//
 
+    
+
+
+    public void actualizarEstado(int unidadesDisponibles){
+        if(unidadesDisponibles>0){
+            setEstado(estado.DISPONIBLE);
+        }
+        else{
+            setEstado(estado.AGOTADO);
+        }
+        
+    }
+     
     /**
      * Método toString de la clase Libro
      */

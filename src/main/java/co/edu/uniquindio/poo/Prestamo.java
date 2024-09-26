@@ -11,24 +11,18 @@ public class Prestamo {
     private LinkedList<DetallePrestamo> listaDetallesPrestamo;
     private double total;
 
-    public Prestamo(String codigo, Libro libro, LocalDate fechaPrestamo, LocalDate fechaEntrega,
-            Bibliotecario bibliotecario, LinkedList<DetallePrestamo> listaDetallePrestamos, double total) {
-        this.codigo = codigo;
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaEntrega, double costoDia, String codigo,
+            Bibliotecario bibliotecario, double total) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaEntrega = fechaEntrega;
-        this.bibliotecario = bibliotecario;
-        listaDetallePrestamos = new LinkedList<>();
-        this.total = total;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
+        this.costoDia = costoDia;
         this.codigo = codigo;
+        this.bibliotecario = bibliotecario;
+        this.total = total;
+        listaDetallesPrestamo = new LinkedList<>();
     }
 
+    //---------------------------------------------Métodos Get y Set de la clase Prestamo--------------------------//
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
@@ -45,12 +39,36 @@ public class Prestamo {
         this.fechaEntrega = fechaEntrega;
     }
 
+    public double getCostoDia() {
+        return costoDia;
+    }
+
+    public void setCostoDia(double costoDia) {
+        this.costoDia = costoDia;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
 
     public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
+    }
+
+    public LinkedList<DetallePrestamo> getListaDetallesPrestamo() {
+        return listaDetallesPrestamo;
+    }
+
+    public void setListaDetallesPrestamo(LinkedList<DetallePrestamo> listaDetallesPrestamo) {
+        this.listaDetallesPrestamo = listaDetallesPrestamo;
     }
 
     public double getTotal() {
@@ -61,12 +79,17 @@ public class Prestamo {
         this.total = total;
     }
 
+    //----------------------------------------------------------------------------------------------------------------------------------------------//
+
+    public void agregarDetallePrestamo(DetallePrestamo detallePrestamo){
+            listaDetallesPrestamo.add(detallePrestamo);
+        }
+ 
     @Override
     public String toString() {
-        return "Prestamo [codigo=" + codigo + ", libro="  + ", fechaPrestamo=" + fechaPrestamo
-                + ", fechaEntrega=" + fechaEntrega + ", bibliotecario=" + bibliotecario + ", total=" + total + "]";
+        return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", costoDia=" + costoDia
+                + ", codigo=" + codigo + ", bibliotecario=" + bibliotecario + ", listaDetallesPrestamo="
+                + listaDetallesPrestamo + ", total=" + total + "]";
     }
 
-    
-    
 }

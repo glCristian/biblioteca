@@ -14,8 +14,10 @@ public class DetallePrestamo {
     public DetallePrestamo(int cantidad, Libro libro) {
         this.subtotal = 0;
         this.cantidad = cantidad;
-        this.libro = libro;
+        this.libro = null;
     }
+
+    //------------------------------------Métodos Get y Set de la clase DetallePrestamo------------------------
 
     /**
      * Método para obtener el subtotal del prestamo
@@ -64,6 +66,33 @@ public class DetallePrestamo {
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
+
+    //----------------------------------------------------------------------------------------------------------
+
+    public Libro solicitarLibro(String c)
+
+
+    public boolean verificarDisponibilidadLibro(int cantidad, Libro libro){
+        boolean centinela = true;
+        if(cantidad>libro.getUnidadesDisponibles()){
+            centinela = false;
+        }
+        return centinela;
+    }
+
+    public void agregarLibroADetalle(String codigo, int cantidad, Libro libro){
+        if(verificarDisponibilidadLibro(cantidad, libro)){              
+            setLibro(libro);
+        }
+    }
+
+    public void actualizarUnidadesLibro(int cantidad){
+        libro.setUnidadesDisponibles(libro.getUnidadesDisponibles()-cantidad);
+    }
+
+    
+    
+    
 
     /**
      * Método toString de la clase DetallePrestamo
