@@ -5,17 +5,15 @@ import java.util.LinkedList;
 
 public class Prestamo {
     private LocalDate fechaPrestamo, fechaEntrega;
-    private double costoDia;
     private String codigo;
     private Bibliotecario bibliotecario;
     private LinkedList<DetallePrestamo> listaDetallesPrestamo;
     private double total;
 
-    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaEntrega, double costoDia, String codigo,
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaEntrega, String codigo,
             Bibliotecario bibliotecario, double total) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaEntrega = fechaEntrega;
-        this.costoDia = costoDia;
         this.codigo = codigo;
         this.bibliotecario = bibliotecario;
         this.total = total;
@@ -39,13 +37,7 @@ public class Prestamo {
         this.fechaEntrega = fechaEntrega;
     }
 
-    public double getCostoDia() {
-        return costoDia;
-    }
-
-    public void setCostoDia(double costoDia) {
-        this.costoDia = costoDia;
-    }
+    
 
     public String getCodigo() {
         return codigo;
@@ -81,13 +73,14 @@ public class Prestamo {
 
     //----------------------------------------------------------------------------------------------------------------------------------------------//
 
+
     public void agregarDetallePrestamo(DetallePrestamo detallePrestamo){
             listaDetallesPrestamo.add(detallePrestamo);
         }
  
     @Override
     public String toString() {
-        return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", costoDia=" + costoDia
+        return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", costoDia=" 
                 + ", codigo=" + codigo + ", bibliotecario=" + bibliotecario + ", listaDetallesPrestamo="
                 + listaDetallesPrestamo + ", total=" + total + "]";
     }

@@ -95,7 +95,9 @@ public class Biblioteca {
         this.cantidadLibros = cantidadLibros;
     }
 
+
     //---------------------------------------------------------------------------------------------------//
+
 
     public boolean verificarEstudiante(String cedula){
         boolean centinela = false;
@@ -167,10 +169,53 @@ public class Biblioteca {
         }
     }
 
+    
+    public void eliminarPrestamo(String codigo){
+        for(Prestamo prestamo : prestamos){
+            if(prestamo.getCodigo().equals(codigo)){
+                prestamos.remove(prestamo);
+            }
+        }
+    }
+
+    public void eliminarEstudiante(String cedula){
+        for(Estudiante estudiante : estudiantes){
+            if(estudiante.getCedula().equals(cedula)){
+                estudiantes.remove(estudiante);
+            }
+        }
+    }
+
+    public void eliminarBibliotecario(String cedula){
+        for(Bibliotecario bibliotecario: bibliotecarios){
+            if(bibliotecario.getCedula().equals(cedula)){
+                bibliotecarios.remove(bibliotecario);
+            }
+        }
+    }
+
+    public void eliminarLibro(String codigo){
+        for (Libro libro : libros){
+            if(libro.getCodigo().equals(codigo)){
+                libros.remove(libro);
+            }
+        }
+    }
+
+    public int unidadesLibroEnPrestamos(String titulo){
+        int cantidadPrestamos = 0;
+        for (Prestamo prestamo : prestamos) {
+            for (DetallePrestamo detallePrestamo  : prestamo.getListaDetallesPrestamo()){
+                if(detallePrestamo.getLibro().getTitulo().equals(titulo)){
+                    cantidadLibros += 1;
+                }
+            } 
+        }
+        return cantidadPrestamos;
+    }
 
     
-
-
+    
 
 
     @Override

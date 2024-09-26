@@ -7,6 +7,7 @@ public class Libro {
     private int unidadesDisponibles;
     private LocalDate fecha;
     private Estado estado;
+    private double costo;
 
     /**
      * Método constructor de la clase Libro
@@ -21,7 +22,7 @@ public class Libro {
      * @param estado              del libro
      */
     public Libro(String titulo, String codigo, String isbn, int unidadesDisponibles, String autor, String editorial,
-            LocalDate fecha, Estado estado) {
+            LocalDate fecha, Estado estado, double costo) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.isbn = isbn;
@@ -30,6 +31,7 @@ public class Libro {
         this.editorial = editorial;
         this.fecha = fecha;
         this.estado = estado;
+        this.costo = costo;
     }
 
     // ---------------------Métodos get y set de la clase------------------//
@@ -176,10 +178,16 @@ public class Libro {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+
+
+
+    public double getCosto(){
+        return costo;
+    }
+    public void setCosto(double costo){
+        this.costo = costo;
+    }
     // --------------------------------------------------------------------//
-
-    
-
 
     public void actualizarEstado(int unidadesDisponibles){
         if(unidadesDisponibles>0){

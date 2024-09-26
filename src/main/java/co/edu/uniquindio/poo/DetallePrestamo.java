@@ -69,8 +69,6 @@ public class DetallePrestamo {
 
     //----------------------------------------------------------------------------------------------------------
 
-    public Libro solicitarLibro(String c)
-
 
     public boolean verificarDisponibilidadLibro(int cantidad, Libro libro){
         boolean centinela = true;
@@ -83,16 +81,13 @@ public class DetallePrestamo {
     public void agregarLibroADetalle(String codigo, int cantidad, Libro libro){
         if(verificarDisponibilidadLibro(cantidad, libro)){              
             setLibro(libro);
+            actualizarUnidadesLibro(cantidad);
         }
     }
 
     public void actualizarUnidadesLibro(int cantidad){
         libro.setUnidadesDisponibles(libro.getUnidadesDisponibles()-cantidad);
     }
-
-    
-    
-    
 
     /**
      * Método toString de la clase DetallePrestamo
