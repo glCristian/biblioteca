@@ -7,9 +7,8 @@ public class Bibliotecario extends Persona {
     private int antiguedad;
     private Collection<Prestamo> prestamos;
 
-    public Bibliotecario(String nombre, String cedula, int telefono, String correo, double salario, int antiguedad){
+    public Bibliotecario(String nombre, String cedula, int telefono, String correo,  int antiguedad){
         super(nombre, cedula, telefono, correo);
-        this.salario = salario;
         this.antiguedad = antiguedad;
         prestamos = new LinkedList<>();
     }
