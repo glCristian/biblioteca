@@ -21,7 +21,8 @@ public class Persona {
         this.correo = correo;
     }
 
-    // ---------------------Métodos get y set de la clase------------------//
+    // -----------Métodos Get y Set de la clase Persona-------------//
+
     /**
      * Método para obtener el nombre de una persona
      * 
@@ -93,6 +94,7 @@ public class Persona {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
     // --------------------------------------------------------------------//
 
     /**

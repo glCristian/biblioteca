@@ -33,69 +33,129 @@ public class Biblioteca {
 
     }
 
-    // -------------------------------Métodos Get y Set de la clase
-    // Biblioteca-----------------------//
+    // ----------Métodos Get y Set de la clase Biblioteca-----------//
 
+    /**
+     * Método para obtener el nombre de la biblioteca
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Método para modificar el nombre de la biblioteca
+     * 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Método para obtener la lista de estudiantes de la biblioteca
+     * @return
+     */
     public Collection<Estudiante> getEstudiantes() {
         return estudiantes;
     }
 
+    /**
+     * Método para modificar la lista de estudiantes de la biblioteca
+     * @param estudiantes
+     */
     public void setEstudiantes(Collection<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
     }
 
+    /**
+     * Método para obtener la lista de bibliotecarios de la biblioteca
+     * @return
+     */
     public Collection<Bibliotecario> getBibliotecarios() {
         return bibliotecarios;
     }
 
+    /**
+     * Método para modificar la lista de bibliotecarios de la biblioteca
+     * @param bibliotecarios
+     */
     public void setBibliotecarios(Collection<Bibliotecario> bibliotecarios) {
         this.bibliotecarios = bibliotecarios;
     }
 
+    /**
+     * Método para obtener la lista de prestamos de la biblioteca
+     * @return 
+     */
     public Collection<Prestamo> getPrestamos() {
         return prestamos;
     }
 
+    /**
+     * Método para modificar la lista de prestamos de la biblioteca
+     * @param prestamos
+     */
     public void setPrestamos(Collection<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
 
+    /**
+     * Método para obtener la lista de libros de la biblioteca
+     * @return
+     */
     public Collection<Libro> getLibros() {
         return libros;
     }
 
+    /**
+     * Método para modificar la lista de libros de la biblioteca
+     * @param libros
+     */
     public void setLibros(Collection<Libro> libros) {
         this.libros = libros;
     }
 
+    /**
+     * Método para obtener la ganancia total de la biblioteca
+     * @return
+     */
     public double getGanancia() {
         return ganancia;
     }
 
+    /**
+     * Método para modificar la ganancia total de la biblioteca
+     * @param ganancia
+     */
     public void setGanancia(double ganancia) {
         this.ganancia = ganancia;
     }
 
+    /**
+     * Método para obtener la cantidad de libros de la biblioteca
+     * @return
+     */
     public int getCantidadLibros() {
         return cantidadLibros;
     }
 
+    /**
+     * Método para modificar la lista de libros de la biblioteca
+     * @param cantidadLibros
+     */
     public void setCantidadLibros(int cantidadLibros) {
         this.cantidadLibros = cantidadLibros;
     }
 
     // ---------------------------------------------------------------------------------------------------//
 
+
     // ---------------------CRUD Bibliotecario--------------------//
 
+    /**
+     * Método para crear un nuevo bibliotecario y agregarlo automáticamente a la biblioteca
+     */
     public void crearNuevoBibliotecario() {
         Scanner scanner = new Scanner(System.in);
 
@@ -119,6 +179,11 @@ public class Biblioteca {
         agregarBibliotecario(bibliotecario);
     }
 
+    /**
+     * Método para evitar la creación de bibliotecarios duplicados
+     * @param cedula del bibliotecario creado
+     * @return centinela
+     */
     public boolean verificarBibliotecario(String cedula) {
         boolean centinela = false;
         for (Bibliotecario bibliotecario : bibliotecarios) {
@@ -130,12 +195,20 @@ public class Biblioteca {
         return centinela;
     }
 
+    /**
+     * Método para agregar un nuevo bibliotecario a la lista de bibliotecarios de la biblioteca
+     * @param bibliotecario
+     */
     public void agregarBibliotecario(Bibliotecario bibliotecario) {
         if (!verificarBibliotecario(bibliotecario.getCedula())) {
             bibliotecarios.add(bibliotecario);
         }
     }
 
+    /**
+     * Método para mostrar los detalles de un bibliotecario dada su cédula
+     * @param cedula del bibliotecario
+     */
     public void mostrarDetallesBibliotecario(String cedula) {
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedula)) {
@@ -144,6 +217,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Método para eliminar un bibliotecario de la biblioteca dada su cédula
+     * @param cedula del bibliotecario
+     */
     public void eliminarBibliotecario(String cedula) {
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedula)) {
@@ -154,8 +231,12 @@ public class Biblioteca {
 
     // -----------------------------------------------------------//
 
+
     // ---------------------CRUD Estudiante----------------------//
 
+    /**
+     * Método para crear un nuevo estudiante y agregarlo automáticamente a la biblioteca
+     */
     public void crearNuevoEstudiante() {
         Scanner scanner = new Scanner(System.in);
 
@@ -179,6 +260,11 @@ public class Biblioteca {
         agregarEstudiante(estudiante);
     }
 
+    /**
+     * Método para evitar la creación de estudiantes duplicados
+     * @param cedula del estudiante creado
+     * @return centinela
+     */
     public boolean verificarEstudiante(String cedula) {
         boolean centinela = false;
         for (Estudiante estudiante : estudiantes) {
@@ -190,12 +276,20 @@ public class Biblioteca {
         return centinela;
     }
 
+    /**
+     * Método para agregar un nuevo estudiante a la lista de estudiantes de la biblioteca
+     * @param estudiante
+     */
     public void agregarEstudiante(Estudiante estudiante) {
         if (!verificarEstudiante(estudiante.getCedula())) {
             estudiantes.add(estudiante);
         }
     }
 
+    /**
+     * Método para mostrar los detalles de un estudiante dada su cédula
+     * @param cedula del estudiante
+     */
     public void mostrarDetallesEstudiante(String cedula) {
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getCedula().equals(cedula)) {
@@ -204,6 +298,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Método para eliminar un estudiante de la biblioteca dada su cédula
+     * @param cedula del estudiante
+     */
     public void eliminarEstudiante(String cedula) {
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getCedula().equals(cedula)) {
@@ -214,8 +312,12 @@ public class Biblioteca {
 
     // -----------------------------------------------------------//
 
+
     // ------------------------CRUD Libro-------------------------//
 
+    /**
+     * Método para crear un nuevo libro, agregarlo a la biblioteca y establecer su estado según las unidades disponibles del mismo
+     */
     public void crearNuevoLibro() {
         Scanner scanner = new Scanner(System.in);
 
@@ -248,6 +350,11 @@ public class Biblioteca {
         agregarLibro(libro);
     }
 
+    /**
+     * Método para evitar la creación de libros duplicados
+     * @param codigo del libro creado
+     * @return centinela
+     */
     public boolean verificarLibro(String codigo) {
         boolean centinela = false;
         for (Libro libro : libros) {
@@ -259,12 +366,20 @@ public class Biblioteca {
         return centinela;
     }
 
+    /**
+     * Método para agregar un nuevo libro a la lista de libros de la biblioteca
+     * @param libro
+     */
     public void agregarLibro(Libro libro) {
         if (!verificarLibro(libro.getCodigo())) {
             libros.add(libro);
         }
     }
 
+    /**
+     * Método para mostrar los detalles de un libro dado su código
+     * @param codigo del libro
+     */
     public void mostrarDetallesLibro(String codigo) {
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
@@ -273,6 +388,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Método para modificar los datos de un libro existente (sobreescribir un libro) dado su código
+     * @param codigo del libro
+     */
     public void sobreescribirLibro(String codigo) {
 
         Scanner scanner = new Scanner(System.in);
@@ -318,6 +437,10 @@ public class Biblioteca {
         System.out.println("No se encontró ningún libro con el código especificado.");
     }
 
+    /**
+     * 
+     * @param codigo
+     */
     public void eliminarLibro(String codigo) {
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
@@ -327,6 +450,7 @@ public class Biblioteca {
     }
 
     // ------------------------------------------------------------//
+
 
     // ---------------------CRUD Prestamo--------------------------//
 
@@ -412,6 +536,7 @@ public class Biblioteca {
     }
 
     // ------------------------------------------------------------//
+
 
     /**
      * Método para consultar la cantidad de prestamos en la cuál está incluido un

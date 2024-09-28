@@ -6,7 +6,7 @@ public class DetallePrestamo {
     private double subtotal;
 
     /**
-     * Método constructo de la clase DetallePrestamo
+     * Método constructor de la clase DetallePrestamo
      * 
      * @param subtotal del costo del prestamo
      * @param cantidad de unidades del libro
@@ -18,8 +18,7 @@ public class DetallePrestamo {
         this.subtotal = libro.getCosto() * cantidad;
     }
 
-    // ------------------------------------Métodos Get y Set de la clase
-    // DetallePrestamo------------------------
+    // -------Métodos Get y Set de la clase DetallePrestamo---------//
 
     /**
      * Método para obtener el subtotal del prestamo

@@ -33,7 +33,8 @@ public class Libro {
         this.costo = costo;
     }
 
-    // ---------------------Métodos get y set de la clase------------------//
+    // ------------Métodos Get y Set de la clase Libro--------------//
+    
     /**
      * Método para obtener el título de un libro
      * 

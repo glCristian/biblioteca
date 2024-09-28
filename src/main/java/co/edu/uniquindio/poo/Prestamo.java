@@ -29,61 +29,116 @@ public class Prestamo {
         listaDetallesPrestamo = new LinkedList<>();
     }
 
-    // ---------------------------------------------Métodos Get y Set de la clase
-    // Prestamo--------------------------//
+    // -----------Métodos Get y Set de la clase Prestamo------------//
 
+    /**
+     * Método para obtener la fecha inicial del prestamo
+     * @return fechaPrestamo
+     */
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
+    /**
+     * Método para modificar la fecha inicial del prestamo
+     * @param fechaPrestamo
+     */
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
+    /**
+     * Método para obtener la fecha de entrega de un prestamo
+     * @return fechaEntrega
+     */
     public LocalDate getFechaEntrega() {
         return fechaEntrega;
     }
 
+    /**
+     * Método para modificar la fecha de entrega de un prestamo
+     * @param fechaEntrega
+     */
     public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 
+    /**
+     * Método para obtener el código de un prestamo
+     * @return codigo
+     */
     public String getCodigo() {
         return codigo;
     }
 
+    /**
+     * Método para modificar el código de un prestamo
+     * @param codigo
+     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * Método para obtener el bibliotecario que asignó el prestamo
+     * @return bibliotecario
+     */
     public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
 
+    /**
+     * Método para modificar el bibliotecario que asignó el prestamo
+     * @param bibliotecario
+     */
     public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
     }
 
+    /**
+     * Método para obtener el estudiante que realizó el prestamo
+     * @return estudiante
+     */
     public Estudiante getEstudiante() {
         return estudiante;
     }
 
+    /**
+     * Método para modificar el estudiante que realizó el prestamo
+     * @param estudiante
+     */
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
 
+    /**
+     * Método para obtener la lista de detalles del prestamo
+     * @return listaDetallesPrestamo
+     */
     public LinkedList<DetallePrestamo> getListaDetallesPrestamo() {
         return listaDetallesPrestamo;
     }
 
+    /**
+     * Método para modificar la lista de detalles del prestamo
+     * @param listaDetallesPrestamo
+     */
     public void setListaDetallesPrestamo(LinkedList<DetallePrestamo> listaDetallesPrestamo) {
         this.listaDetallesPrestamo = listaDetallesPrestamo;
     }
 
+    /**
+     * Método para obtener el costo total del prestamo
+     * @return total
+     */
     public double getTotal() {
         return total;
     }
 
+    /**
+     * Método para modificar el costo total del prestamo
+     * @param total
+     */
     public void setTotal(double total) {
         this.total = total;
     }
