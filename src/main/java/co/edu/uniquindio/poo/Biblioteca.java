@@ -162,8 +162,15 @@ public class Biblioteca {
         System.out.println("Nombre: ");
         String nombre = scanner.nextLine();
 
-        System.out.println("Cédula: ");
-        String cedula = scanner.nextLine();
+        String cedula;
+        do {
+            System.out.println("Cédula: ");
+            cedula = scanner.nextLine();
+            
+            if (verificarBibliotecario(cedula)) {
+                System.out.println("Ya existe un bibliotecario con esa cédula. Por favor, ingrese una cédula diferente.");
+            }
+        } while (verificarBibliotecario(cedula));
 
         System.out.println("Teléfono: ");
         int telefono = scanner.nextInt();
@@ -182,14 +189,13 @@ public class Biblioteca {
     /**
      * Método para evitar la creación de bibliotecarios duplicados
      * @param cedula del bibliotecario creado
-     * @return centinela
+     * @return estado del centinela (true/false)
      */
     public boolean verificarBibliotecario(String cedula) {
         boolean centinela = false;
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedula)) {
-                centinela = true;
-                break;
+                return true;
             }
         }
         return centinela;
@@ -243,8 +249,15 @@ public class Biblioteca {
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
 
-        System.out.print("Cédula: ");
-        String cedula = scanner.nextLine();
+        String cedula;
+        do {
+            System.out.println("Cédula: ");
+            cedula = scanner.nextLine();
+            
+            if (verificarEstudiante(cedula)) {
+                System.out.println("Ya existe un estudiante con esa cédula. Por favor, ingrese una cédula diferente.");
+            }
+        } while (verificarEstudiante(cedula));System.out.print("Cédula: ");
 
         System.out.print("Teléfono: ");
         int telefono = scanner.nextInt();
@@ -263,14 +276,13 @@ public class Biblioteca {
     /**
      * Método para evitar la creación de estudiantes duplicados
      * @param cedula del estudiante creado
-     * @return centinela
+     * @return estado del centinela (true/false)
      */
     public boolean verificarEstudiante(String cedula) {
         boolean centinela = false;
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getCedula().equals(cedula)) {
-                centinela = true;
-                break;
+                return true;
             }
         }
         return centinela;
@@ -325,7 +337,15 @@ public class Biblioteca {
         String titulo = scanner.nextLine();
 
         System.out.print("Código: ");
-        String codigo = scanner.nextLine();
+        String codigo;
+        do {
+            System.out.println("Cédula: ");
+            codigo = scanner.nextLine();
+            
+            if (verificarLibro(codigo)) {
+                System.out.println("Ya existe un libro con ese código. Por favor, ingrese un código diferente.");
+            }
+        } while (verificarLibro(codigo));System.out.print("Código: ");
 
         System.out.print("ISBN: ");
         String isbn = scanner.nextLine();
@@ -353,7 +373,7 @@ public class Biblioteca {
     /**
      * Método para evitar la creación de libros duplicados
      * @param codigo del libro creado
-     * @return centinela
+     * @return estado del centinela (true/false)
      */
     public boolean verificarLibro(String codigo) {
         boolean centinela = false;
@@ -438,8 +458,8 @@ public class Biblioteca {
     }
 
     /**
-     * 
-     * @param codigo
+     * Método para eliminar un libro dado su código
+     * @param codigo del libro
      */
     public void eliminarLibro(String codigo) {
         for (Libro libro : libros) {
@@ -454,6 +474,9 @@ public class Biblioteca {
 
     // ---------------------CRUD Prestamo--------------------------//
 
+    /**
+     * 
+     */
     public void crearNuevoPrestamo() {
         Scanner scanner = new Scanner(System.in);
 
@@ -502,6 +525,11 @@ public class Biblioteca {
         System.out.println("Préstamo creado exitosamente.");
     }
 
+    /**
+     * 
+     * @param codigo
+     * @return
+     */
     public boolean verificarPrestamo(String codigo) {
         boolean centinela = false;
         for (Prestamo prestamo : prestamos) {
@@ -513,12 +541,20 @@ public class Biblioteca {
         return centinela;
     }
 
+    /**
+     * 
+     * @param prestamo
+     */
     public void agregarPrestamo(Prestamo prestamo) {
         if (!verificarPrestamo(prestamo.getCodigo())) {
             prestamos.add(prestamo);
         }
     }
 
+    /**
+     * 
+     * @param codigo
+     */
     public void consultarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getCodigo().equals(codigo)) {
@@ -527,6 +563,10 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * 
+     * @param codigo
+     */
     public void eliminarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getCodigo().equals(codigo)) {
