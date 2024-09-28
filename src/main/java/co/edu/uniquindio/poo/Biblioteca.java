@@ -14,6 +14,13 @@ public class Biblioteca {
     private double ganancia;
     private int cantidadLibros;
 
+    /**
+     * Método constructor de la clase Biblioteca
+     * 
+     * @param nombre         de la biblioteca
+     * @param ganancia       de la biblioteca
+     * @param cantidadLibros de la biblioteca
+     */
     public Biblioteca(String nombre, double ganancia, int cantidadLibros) {
 
         estudiantes = new LinkedList<>();
@@ -86,6 +93,129 @@ public class Biblioteca {
     }
 
     // ---------------------------------------------------------------------------------------------------//
+
+    // ---------------------CRUD Bibliotecario--------------------//
+
+    public void crearNuevoBibliotecario() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Cédula: ");
+        String cedula = scanner.nextLine();
+
+        System.out.println("Teléfono: ");
+        int telefono = scanner.nextInt();
+
+        System.out.println("Correo: ");
+        String correo = scanner.nextLine();
+
+        System.out.println("Años de antigüedad: ");
+        int antiguedad = scanner.nextInt();
+
+        Bibliotecario bibliotecario = new Bibliotecario(nombre, cedula, telefono, correo, antiguedad);
+
+        agregarBibliotecario(bibliotecario);
+    }
+
+    public boolean verificarBibliotecario(String cedula) {
+        boolean centinela = false;
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public void agregarBibliotecario(Bibliotecario bibliotecario) {
+        if (!verificarBibliotecario(bibliotecario.getCedula())) {
+            bibliotecarios.add(bibliotecario);
+        }
+    }
+
+    public void mostrarDetallesBibliotecario(String cedula) {
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                System.out.println(bibliotecario);
+            }
+        }
+    }
+
+    public void eliminarBibliotecario(String cedula) {
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                bibliotecarios.remove(bibliotecario);
+            }
+        }
+    }
+
+    // -----------------------------------------------------------//
+
+    // ---------------------CRUD Estudiante----------------------//
+
+    public void crearNuevoEstudiante() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Cédula: ");
+        String cedula = scanner.nextLine();
+
+        System.out.print("Teléfono: ");
+        int telefono = scanner.nextInt();
+
+        System.out.print("Correo: ");
+        String correo = scanner.nextLine();
+
+        System.out.print("Edad: ");
+        int edad = scanner.nextInt();
+
+        Estudiante estudiante = new Estudiante(nombre, cedula, telefono, correo, edad);
+
+        agregarEstudiante(estudiante);
+    }
+
+    public boolean verificarEstudiante(String cedula) {
+        boolean centinela = false;
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public void agregarEstudiante(Estudiante estudiante) {
+        if (!verificarEstudiante(estudiante.getCedula())) {
+            estudiantes.add(estudiante);
+        }
+    }
+
+    public void mostrarDetallesEstudiante(String cedula) {
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                System.out.println(estudiante);
+            }
+        }
+    }
+
+    public void eliminarEstudiante(String cedula) {
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedula)) {
+                estudiantes.remove(estudiante);
+            }
+        }
+    }
+
+    // -----------------------------------------------------------//
+
+    // ------------------------CRUD Libro-------------------------//
+
     public void crearNuevoLibro() {
         Scanner scanner = new Scanner(System.in);
 
@@ -107,86 +237,15 @@ public class Biblioteca {
         System.out.print("Fecha de publicación (aaaa-mm-dd): ");
         LocalDate fecha = LocalDate.parse(scanner.nextLine());
 
-        System.out.print("Estado (DISPONIBLE o AGOTADO):");
-        Estado estado = Estado.valueOf(scanner.nextLine().toUpperCase());
-
         System.out.print("Costo: ");
         double costo = scanner.nextDouble();
 
         System.out.print("Unidades Disponibles: ");
         int unidadesDisponibles = scanner.nextInt();
 
-        Libro libro = new Libro(titulo, codigo, isbn, unidadesDisponibles, autor, editorial, fecha, estado, costo);
+        Libro libro = new Libro(titulo, codigo, isbn, unidadesDisponibles, autor, editorial, fecha, costo);
 
         agregarLibro(libro);
-    }
-
-    public void crearNuevoEstudiante() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Nombre: ");
-        String nombre = scanner.nextLine();
-
-        System.out.print("Cédula: ");
-        String cedula = scanner.nextLine();
-
-        System.out.print("Teléfono: ");
-        int telefono = scanner.nextInt();
-
-        System.out.print("Correo:");
-        String correo = scanner.nextLine();
-
-        System.out.print("Edad: ");
-        int edad = scanner.nextInt();
-
-        Estudiante estudiante = new Estudiante(nombre, cedula, telefono, correo, edad);
-
-        agregarEstudiante(estudiante);
-    }
-
-    public void crearNuevoBibliotecario() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Ingresa el nombre del bibliotecario:");
-        String nombre = scanner.nextLine();
-
-        System.out.println("Ingresa la cedula del bibliotecario:");
-        String cedula = scanner.nextLine();
-
-        System.out.println("Ingresa el telefono de bibliotecario:");
-        int telefono = scanner.nextInt();
-
-        System.out.println("Ingresa el correo del bibliotecario:");
-        String correo = scanner.nextLine();
-
-        System.out.println("Ingresa la antiguedad del bibliotecario:");
-        int antiguedad = scanner.nextInt();
-
-        Bibliotecario bibliotecario = new Bibliotecario(nombre, cedula, telefono, correo, antiguedad);
-
-        agregarBibliotecario(bibliotecario);
-    }
-
-    public boolean verificarEstudiante(String cedula) {
-        boolean centinela = false;
-        for (Estudiante estudiante : estudiantes) {
-            if (estudiante.getCedula().equals(cedula)) {
-                centinela = true;
-                break;
-            }
-        }
-        return centinela;
-    }
-
-    public boolean verificarBibliotecario(String cedula) {
-        boolean centinela = false;
-        for (Bibliotecario bibliotecario : bibliotecarios) {
-            if (bibliotecario.getCedula().equals(cedula)) {
-                centinela = true;
-                break;
-            }
-        }
-        return centinela;
     }
 
     public boolean verificarLibro(String codigo) {
@@ -200,95 +259,24 @@ public class Biblioteca {
         return centinela;
     }
 
-    public boolean verificarPrestamo(String codigo) {
-        boolean centinela = false;
-        for (Prestamo prestamo : prestamos) {
-            if (prestamo.getCodigo().equals(codigo)) {
-                centinela = true;
-                break;
-            }
-        }
-        return centinela;
-    }
-
-    public void agregarEstudiante(Estudiante estudiante) {
-        if (!verificarEstudiante(estudiante.getCedula())) {
-            estudiantes.add(estudiante);
-        }
-    }
-
-    public void agregarBibliotecario(Bibliotecario bibliotecario) {
-        if (!verificarBibliotecario(bibliotecario.getCedula())) {
-            bibliotecarios.add(bibliotecario);
-        }
-    }
-
     public void agregarLibro(Libro libro) {
         if (!verificarLibro(libro.getCodigo())) {
             libros.add(libro);
         }
     }
 
-    public void agregarPrestamo(Prestamo prestamo) {
-        if (!verificarPrestamo(prestamo.getCodigo())) {
-            prestamos.add(prestamo);
-        }
-    }
-
-    public void eliminarPrestamo(String codigo) {
-        for (Prestamo prestamo : prestamos) {
-            if (prestamo.getCodigo().equals(codigo)) {
-                prestamos.remove(prestamo);
-            }
-        }
-    }
-
-    public void eliminarEstudiante(String cedula) {
-        for (Estudiante estudiante : estudiantes) {
-            if (estudiante.getCedula().equals(cedula)) {
-                estudiantes.remove(estudiante);
-            }
-        }
-    }
-
-    public void eliminarBibliotecario(String cedula) {
-        for (Bibliotecario bibliotecario : bibliotecarios) {
-            if (bibliotecario.getCedula().equals(cedula)) {
-                bibliotecarios.remove(bibliotecario);
-            }
-        }
-    }
-
-    public void eliminarLibro(String codigo) {
-        for (Libro libro : libros) {
-            if (libro.getCodigo().equals(codigo)) {
-                libros.remove(libro);
-            }
-        }
-    }
-
-    public int unidadesLibroEnPrestamos(String titulo) {
-        int cantidadPrestamos = 0;
-        for (Prestamo prestamo : prestamos) {
-            for (DetallePrestamo detallePrestamo : prestamo.getListaDetallesPrestamo()) {
-                if (detallePrestamo.getLibro().getTitulo().equals(titulo)) {
-                    cantidadLibros += 1;
-                }
-            }
-        }
-        return cantidadPrestamos;
-    }
-
     public void mostrarDetallesLibro(String codigo) {
         for (Libro libro : libros) {
             if (libro.getCodigo().equals(codigo)) {
-                System.out.println(libro.toString());
+                System.out.println(libro);
             }
         }
     }
 
     public void sobreescribirLibro(String codigo) {
+
         Scanner scanner = new Scanner(System.in);
+
         for (Libro libro : libros) {
 
             if (libro.getCodigo().equals(codigo)) {
@@ -314,10 +302,6 @@ public class Biblioteca {
                 LocalDate nuevaFecha = LocalDate.parse(scanner.nextLine());
                 libro.setFecha(nuevaFecha);
 
-                System.out.println("Nuevo estado (DISPONIBLE o AGOTADO):");
-                Estado nuevoEstado = Estado.valueOf(scanner.nextLine().toUpperCase());
-                libro.setEstado(nuevoEstado);
-
                 System.out.println("Nuevo costo:");
                 double nuevoCosto = scanner.nextDouble();
                 libro.setCosto(nuevoCosto);
@@ -326,14 +310,89 @@ public class Biblioteca {
                 int nuevasUnidades = scanner.nextInt();
                 libro.setUnidadesDisponibles(nuevasUnidades);
 
-                // Actualizamos el estado según la cantidad de unidades disponibles
                 libro.actualizarEstado(nuevasUnidades);
 
                 System.out.println("Los datos del libro se han actualizado exitosamente.");
-                return;
             }
         }
         System.out.println("No se encontró ningún libro con el código especificado.");
+    }
+
+    public void eliminarLibro(String codigo) {
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                libros.remove(libro);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------//
+
+    // ---------------------CRUD Prestamo--------------------------//
+
+    public void crearNuevoPrestamo() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Código: ");
+        String codigo = scanner.nextLine();
+
+        System.out.println("Ingrese la cédula del Bibliotecario: ");
+        String cedulaBibliotecario = scanner.nextLine();
+        Bibliotecario bibliotecarioPrestamo = null;
+
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedulaBibliotecario)) {
+                bibliotecarioPrestamo = bibliotecario;
+                break;
+            }
+        }
+
+        if (bibliotecarioPrestamo == null) {
+            System.out.println("No se encontró un bibliotecario con esa cédula.");
+            return;
+        }
+
+        System.out.println("Ingrese la cédula del Estudiante: ");
+        String cedulaEstudiante = scanner.nextLine();
+        Estudiante estudiantePrestamo = null;
+
+        for (Estudiante estudiante : estudiantes) {
+            if (estudiante.getCedula().equals(cedulaEstudiante)) {
+                estudiantePrestamo = estudiante;
+                break;
+            }
+        }
+
+        if (estudiantePrestamo == null) {
+            System.out.println("No se encontró un estudiante con esa cédula.");
+            return;
+        }
+
+        Prestamo prestamo = new Prestamo(LocalDate.now(), codigo, bibliotecarioPrestamo, estudiantePrestamo);
+
+        bibliotecarioPrestamo.getPrestamos().add(prestamo);
+        estudiantePrestamo.getPrestamos().add(prestamo);
+
+        agregarPrestamo(prestamo);
+
+        System.out.println("Préstamo creado exitosamente.");
+    }
+
+    public boolean verificarPrestamo(String codigo) {
+        boolean centinela = false;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public void agregarPrestamo(Prestamo prestamo) {
+        if (!verificarPrestamo(prestamo.getCodigo())) {
+            prestamos.add(prestamo);
+        }
     }
 
     public void consultarPrestamo(String codigo) {
@@ -344,6 +403,66 @@ public class Biblioteca {
         }
     }
 
+    public void eliminarPrestamo(String codigo) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                prestamos.remove(prestamo);
+            }
+        }
+    }
+
+    // ------------------------------------------------------------//
+
+    /**
+     * Método para consultar la cantidad de prestamos en la cuál está incluido un
+     * libro
+     * 
+     * @param titulo del libro
+     * @return cantidadPrestamos
+     */
+    public int unidadesLibroEnPrestamos(String titulo) {
+        int cantidadPrestamos = 0;
+        for (Prestamo prestamo : prestamos) {
+            for (DetallePrestamo detallePrestamo : prestamo.getListaDetallesPrestamo()) {
+                if (detallePrestamo.getLibro().getTitulo().equals(titulo)) {
+                    cantidadLibros += 1;
+                }
+            }
+        }
+        return cantidadPrestamos;
+    }
+
+    /**
+     * Método para entregar un prestamo con fecha del día actual
+     * 
+     * @param codigo del prestamo a entregar
+     */
+    public void entregarPrestamo(String codigo) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getCodigo().equals(codigo)) {
+                prestamo.setFechaEntrega(LocalDate.now());
+                double total = prestamo.calcularTotal();
+                prestamo.setTotal(total);
+                System.out.println("Prestamo entregado correctamente (" + LocalDate.now()
+                        + "), el costo total del prestamo es: $" + prestamo.getTotal());
+            }
+        }
+    }
+
+    // Agregar un método para mostrar la cantidad de préstamos realizados por cada
+    // empleado
+
+    // Agregar un método para imprimir el estudiante con mayor cantidad de prestamos
+
+    // Agregar un método para calcular el total de dinero a pagar a los
+    // bibliotecarios
+
+    // Agregar un método para calcular el total de dinero recaudado por la
+    // biblioteca, teniendo en cuenta el dinero a pagar a los bibliotecarios
+
+    /**
+     * Método toString de la clase Biblioteca
+     */
     @Override
     public String toString() {
         return "Biblioteca [nombre=" + nombre + ", estudiantes=" + estudiantes + ", bibliotecarios=" + bibliotecarios

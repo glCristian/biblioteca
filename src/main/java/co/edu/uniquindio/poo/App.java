@@ -16,7 +16,7 @@ public class App{
             char opcion = scanner.nextLine().charAt(0);
 
             if(opcion == '1' || opcion == '2' || opcion == '3' || opcion == '4' || opcion == '5'){
-                manejarSeleccion(opcion);
+                //manejarSeleccion(opcion);
             }
 
             else if(opcion == '5'){
@@ -55,19 +55,19 @@ public class App{
         System.out.println(mensaje);
     }
 
+
 //--------------------------Banco de datos de prueba genéricos----------------------//
 
-
-
     Libro libro1 = new Libro("Cien años de soledad", "2828", "CX32", 15, "Gabriel Garcia Marquez ",
-     "Norma", LocalDate.of(1967, 05, 4) , Estado.DISPONIBLE, 1500);
+     "Norma", LocalDate.of(1967, 05, 4) , 1500);
 
     Libro libro2 = new Libro("Maria", "398", "JI23", 11, "Jorge Isaacs ",
-     "Norma", LocalDate.of(1867, 05, 9) , Estado.DISPONIBLE, 1300);
+     "Norma", LocalDate.of(1867, 05, 9) , 1300);
 
     Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", 7676,
      "juliAlva@gmail.com", 23);
      
+//----------------------------------------------------------------------------------//
 
 
 

@@ -21,8 +21,7 @@ public class Libro {
      * @param fecha               de publicación libro
      * @param estado              del libro
      */
-    public Libro(String titulo, String codigo, String isbn, int unidadesDisponibles, String autor, String editorial,
-            LocalDate fecha, Estado estado, double costo) {
+    public Libro(String titulo, String codigo, String isbn, int unidadesDisponibles, String autor, String editorial, LocalDate fecha, double costo) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.isbn = isbn;
@@ -30,7 +29,7 @@ public class Libro {
         this.autor = autor;
         this.editorial = editorial;
         this.fecha = fecha;
-        this.estado = estado;
+        this.actualizarEstado(unidadesDisponibles);
         this.costo = costo;
     }
 
@@ -179,16 +178,28 @@ public class Libro {
         this.estado = estado;
     }
 
-
-
+    /**
+     * Método para obtener el costo de un libro
+     * @return costo
+     */
     public double getCosto(){
         return costo;
     }
+
+    /**
+     * Método para modificar el costo de un libro
+     * @param costo del libro
+     */
     public void setCosto(double costo){
         this.costo = costo;
     }
+
     // --------------------------------------------------------------------//
 
+    /**
+     * Método para actualizar el estado del libro según la cantidad de unidades disponibles del mismo
+     * @param unidadesDisponibles del libro
+     */
     public void actualizarEstado(int unidadesDisponibles){
         if(unidadesDisponibles>0){
             setEstado(estado.DISPONIBLE);

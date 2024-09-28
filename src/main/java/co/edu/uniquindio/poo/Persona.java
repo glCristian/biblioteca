@@ -9,10 +9,10 @@ public class Persona {
     /**
      * Método constructor de la clase Persona
      * 
-     * @param nombre   del estudiante
-     * @param cedula   del estudiante
-     * @param telefono del estudiante
-     * @param correo   del estudiante
+     * @param nombre   de la persona
+     * @param cedula   de la persona
+     * @param telefono de la persona
+     * @param correo   de la persona
      */
     public Persona(String nombre, String cedula, int telefono, String correo) {
         this.nombre = nombre;

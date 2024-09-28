@@ -1,26 +1,29 @@
 package co.edu.uniquindio.poo;
 
 public class DetallePrestamo {
-    private double subtotal;
-    private int cantidad;
     private Libro libro;
-    
+    private int cantidad;
+    private double subtotal;
+
     /**
      * Método constructo de la clase DetallePrestamo
+     * 
      * @param subtotal del costo del prestamo
      * @param cantidad de unidades del libro
-     * @param libro a prestar
+     * @param libro    a prestar
      */
-    public DetallePrestamo(int cantidad, Libro libro) {
-        this.subtotal = 0;
+    public DetallePrestamo(Libro libro, int cantidad) {
+        this.libro = libro;
         this.cantidad = cantidad;
-        this.libro = null;
+        this.subtotal = libro.getCosto() * cantidad;
     }
 
-    //------------------------------------Métodos Get y Set de la clase DetallePrestamo------------------------
+    // ------------------------------------Métodos Get y Set de la clase
+    // DetallePrestamo------------------------
 
     /**
      * Método para obtener el subtotal del prestamo
+     * 
      * @return subtotal
      */
     public double getSubtotal() {
@@ -29,6 +32,7 @@ public class DetallePrestamo {
 
     /**
      * Método para modificar el subtotal del prestamo
+     * 
      * @param subtotal del prestamo
      */
     public void setSubtotal(double subtotal) {
@@ -37,6 +41,7 @@ public class DetallePrestamo {
 
     /**
      * Método para obtener la cantidad de unidades del libro a prestar
+     * 
      * @return cantidad
      */
     public int getCantidad() {
@@ -45,6 +50,7 @@ public class DetallePrestamo {
 
     /**
      * Método para modificar la cantidad de unidades del libro a prestar
+     * 
      * @param cantidad de unidades del libro a prestar
      */
     public void setCantidad(int cantidad) {
@@ -53,6 +59,7 @@ public class DetallePrestamo {
 
     /**
      * Método para obtener el libro a prestar
+     * 
      * @return libro
      */
     public Libro getLibro() {
@@ -61,32 +68,52 @@ public class DetallePrestamo {
 
     /**
      * Método para modificar el libro a prestar
+     * 
      * @param libro a prestar
      */
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
 
-    //----------------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------------
 
-
-    public boolean verificarDisponibilidadLibro(int cantidad, Libro libro){
+    /**
+     * Método para modificar la disponibilidad del libro a prestar
+     * 
+     * @param cantidad de unidades solicitadas
+     * @param libro    a prestar
+     * @return centinela
+     */
+    public boolean verificarDisponibilidadLibro(int cantidad, Libro libro) {
         boolean centinela = true;
-        if(cantidad>libro.getUnidadesDisponibles()){
+        if (cantidad > libro.getUnidadesDisponibles()) {
             centinela = false;
         }
         return centinela;
     }
 
-    public void agregarLibroADetalle(String codigo, int cantidad, Libro libro){
-        if(verificarDisponibilidadLibro(cantidad, libro)){              
+    /**
+     * Método para agregar el libro solicitado a un detalle del prestamo
+     * 
+     * @param codigo   del libro
+     * @param cantidad de unidades solicitadas del libro
+     * @param libro    a prestar
+     */
+    public void agregarLibroADetalle(String codigo, int cantidad, Libro libro) {
+        if (verificarDisponibilidadLibro(cantidad, libro)) {
             setLibro(libro);
             actualizarUnidadesLibro(cantidad);
         }
     }
 
-    public void actualizarUnidadesLibro(int cantidad){
-        libro.setUnidadesDisponibles(libro.getUnidadesDisponibles()-cantidad);
+    /**
+     * Método para actualizar las unidades disponibles del libro luego de realizar
+     * el prestamo
+     * 
+     * @param cantidad de unidades solicitadas
+     */
+    public void actualizarUnidadesLibro(int cantidad) {
+        libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
     }
 
     /**
@@ -96,6 +123,5 @@ public class DetallePrestamo {
     public String toString() {
         return "DetallePrestamo [subtotal=" + subtotal + ", cantidad=" + cantidad + ", libro=" + libro + "]";
     }
-
 
 }

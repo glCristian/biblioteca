@@ -5,6 +5,8 @@
         "codigo",
         "Codigo",
         "isbn",
-        "Prestamo"
+        "prestamo",
+        "Prestamo",
+        "sobreescribir"
     ]
 }
