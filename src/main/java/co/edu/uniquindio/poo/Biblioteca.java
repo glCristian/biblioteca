@@ -614,10 +614,42 @@ public class Biblioteca {
         }
     }
 
-    // Agregar un método para mostrar la cantidad de préstamos realizados por cada
-    // empleado
 
-    // Agregar un método para imprimir el estudiante con mayor cantidad de prestamos
+    /**
+     * Método que obtiene el numero de prestamos realizados por cada bibliotecario y muestra un mensaje 
+     * @param cedula del bibliotecario 
+     */
+    public void obtenerCantidadPrestamosBibliotecario(String cedula) {
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            if (bibliotecario.getCedula().equals(cedula)) {
+                System.out.print("El bibliotecario con cedula " + cedula + "ha realizado " 
+                + bibliotecario.obtenerCantidadPrestamosRealizados() + " prestamos");
+            }
+        }
+        // Si no se encuentra el bibliotecario, se muestra otro mensaje
+        System.out.println("No se encontró el bibliotecario");
+    }
+
+
+    /**
+     * Método que imprime el estudiante con más prestamos
+     */
+    public void obtenerEstudianteConMasPrestamos() {
+        Estudiante estudianteConMasPrestamos = null;
+        int maxPrestamos = 0;
+    
+        for (Estudiante estudiante : estudiantes) {
+            int cantidadPrestamos = estudiante.getPrestamos().size();
+    
+            if (cantidadPrestamos > maxPrestamos) {
+                maxPrestamos = cantidadPrestamos;
+                estudianteConMasPrestamos = estudiante;
+            }
+        }
+    
+        System.out.println("El estudiante con mas prestamos es: " + estudianteConMasPrestamos);
+    }
+
 
     // Agregar un método para calcular el total de dinero a pagar a los
     // bibliotecarios

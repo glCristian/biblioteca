@@ -99,6 +99,15 @@ public class Bibliotecario extends Persona {
     }
 
     /**
+     * Método que obtiene el numero de prestamos realizados por cada bibliotecario
+     * @return tamaño de la lista de prestamos de un bibliotecario
+     */
+    public int obtenerCantidadPrestamosRealizados() {
+        return prestamos.size();
+    }
+
+
+    /**
      * Método toString de la clase Bibliotecario
      */
     @Override
