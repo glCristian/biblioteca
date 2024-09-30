@@ -616,18 +616,16 @@ public class Biblioteca {
 
 
     /**
-     * Método que obtiene el numero de prestamos realizados por cada bibliotecario y muestra un mensaje 
+     * Método que obtiene el número de prestamos realizados por cada bibliotecario y muestra un mensaje 
      * @param cedula del bibliotecario 
      */
-    public void obtenerCantidadPrestamosBibliotecario(String cedula) {
+    public void obtenerCantidadPrestamosBibliotecario() {
+        StringBuilder cantidadPrestamos = new StringBuilder();
         for (Bibliotecario bibliotecario : bibliotecarios) {
-            if (bibliotecario.getCedula().equals(cedula)) {
-                System.out.print("El bibliotecario con cedula " + cedula + "ha realizado " 
-                + bibliotecario.obtenerCantidadPrestamosRealizados() + " prestamos");
-            }
+            cantidadPrestamos.append(bibliotecario.getNombre() + ": ");
+            cantidadPrestamos.append(bibliotecario.obtenerCantidadPrestamosRealizados() + "\n");
         }
-        // Si no se encuentra el bibliotecario, se muestra otro mensaje
-        System.out.println("No se encontró el bibliotecario");
+        System.out.println(cantidadPrestamos);
     }
 
 

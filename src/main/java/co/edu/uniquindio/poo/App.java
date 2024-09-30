@@ -12,6 +12,7 @@ public class App{
             mostrarMensaje("2. Gestionar Estudiantes");
             mostrarMensaje("3. Gestionar Libros");
             mostrarMensaje("4. Gestionar Prestamos");
+            mostrar
             mostrarMensaje("5. Salir");
             char opcion = scanner.nextLine().charAt(0);
 
@@ -67,12 +68,22 @@ public class App{
     Libro libro3 = new Libro("El amor en los tiempos del colera", "6777", "GG13", 16, "Gabriel Garcia Marquez  ",
      "Norma", LocalDate.of(1867, 1, 1) , 1100);
 
+    Libro libro4 = new Libro("El hombre en busca de sentido", "7853", "HU17", 9, "Viktor frankl  ",
+     "Herder", LocalDate.of(1946, 1, 1) , 1000);
+
     Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", "3217896556",
      "juliAlva@gmail.com", 23);
+
+
+     Bibliotecario bibliotecario2 = new Bibliotecario("Andres Parra", "1234568", "31229876556",
+     "Andypaa@gmail.com", 10);
 
     Estudiante estudiante1 = new Estudiante("Cristian Camilo Bonilla", 
      "1115192851", "31882161658" , "cristianc@gmail.com", 18);
      
+
+     Estudiante estudiante2 = new Estudiante("Cristian Camilo Bonilla", 
+     "1115192851", "31882161658" , "cristianc@gmail.com", 18);
 //----------------------------------------------------------------------------------//
 
 
