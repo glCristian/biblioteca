@@ -64,8 +64,14 @@ public class App{
     Libro libro2 = new Libro("Maria", "398", "JI23", 11, "Jorge Isaacs ",
      "Norma", LocalDate.of(1867, 05, 9) , 1300);
 
-    Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", 7676,
+    Libro libro3 = new Libro("El amor en los tiempos del colera", "6777", "GG13", 16, "Gabriel Garcia Marquez  ",
+     "Norma", LocalDate.of(1867, 1, 1) , 1100);
+
+    Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", "3217896556",
      "juliAlva@gmail.com", 23);
+
+    Estudiante estudiante1 = new Estudiante("Cristian Camilo Bonilla", 
+     "1115192851", "31882161658" , "cristianc@gmail.com", 18);
      
 //----------------------------------------------------------------------------------//
 

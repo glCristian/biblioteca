@@ -16,7 +16,7 @@ public class Estudiante extends Persona {
      * @param correo   del estudiante
      * @param edad     del estudiante
      */
-    public Estudiante(String nombre, String cedula, int telefono, String correo, int edad) {
+    public Estudiante(String nombre, String cedula, String telefono, String correo, int edad) {
         super(nombre, cedula, telefono, correo);
         this.edad = edad;
         prestamos = new LinkedList<>();

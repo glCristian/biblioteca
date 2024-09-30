@@ -173,7 +173,7 @@ public class Biblioteca {
         } while (verificarBibliotecario(cedula));
 
         System.out.println("Teléfono: ");
-        int telefono = scanner.nextInt();
+        String telefono = scanner.nextLine();
 
         System.out.println("Correo: ");
         String correo = scanner.nextLine();
@@ -260,7 +260,7 @@ public class Biblioteca {
         } while (verificarEstudiante(cedula));System.out.print("Cédula: ");
 
         System.out.print("Teléfono: ");
-        int telefono = scanner.nextInt();
+        String telefono = scanner.nextLine();
 
         System.out.print("Correo: ");
         String correo = scanner.nextLine();
@@ -653,9 +653,31 @@ public class Biblioteca {
 
     // Agregar un método para calcular el total de dinero a pagar a los
     // bibliotecarios
+    public double totalPagarBibliotecarios (){
+        double totalPagar = 0;
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            totalPagar += bibliotecario.getSalario();
+        }
+        System.out.println("El total a pagar a los bibliotecarios es: $" + totalPagar); 
+        return totalPagar;
+    }
+
+
 
     // Agregar un método para calcular el total de dinero recaudado por la
     // biblioteca, teniendo en cuenta el dinero a pagar a los bibliotecarios
+    public void totalRecaudoBiblioteca(){
+        double subTotal = 0;
+        double  recaudo = 0;
+        for (Prestamo prestamo : prestamos) {
+            subTotal += prestamo.getTotal();
+        }
+        recaudo = subTotal - totalPagarBibliotecarios();
+        System.out.println("El recaudo total de la biblioteca es de: $" + recaudo);
+    }
+
+
+
 
     /**
      * Método toString de la clase Biblioteca

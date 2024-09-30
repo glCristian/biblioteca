@@ -17,7 +17,7 @@ public class Bibliotecario extends Persona {
      * @param correo     del bibliotecario
      * @param antiguedad del bibliotecario
      */
-    public Bibliotecario(String nombre, String cedula, int telefono, String correo, int antiguedad) {
+    public Bibliotecario(String nombre, String cedula, String telefono, String correo, int antiguedad) {
         super(nombre, cedula, telefono, correo);
         this.antiguedad = antiguedad;
         prestamos = new LinkedList<>();
@@ -99,8 +99,8 @@ public class Bibliotecario extends Persona {
     }
 
     /**
-     * Método que obtiene el numero de prestamos realizados por cada bibliotecario
-     * @return tamaño de la lista de prestamos de un bibliotecario
+     * Método que obtiene el numero de prestamos realizados por el bibliotecario
+     * @return tamaño de la lista de prestamos
      */
     public int obtenerCantidadPrestamosRealizados() {
         return prestamos.size();
