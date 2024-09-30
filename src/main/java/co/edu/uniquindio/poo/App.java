@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class App{
     public static void main(String[] args) {
+        Biblioteca biblioteca = new Biblioteca("biblioteca CRAI", 0, 0);
         boolean activo = true;
         while (activo){
             Scanner scanner = new Scanner(System.in);
@@ -12,44 +13,37 @@ public class App{
             mostrarMensaje("2. Gestionar Estudiantes");
             mostrarMensaje("3. Gestionar Libros");
             mostrarMensaje("4. Gestionar Prestamos");
-            mostrar
-            mostrarMensaje("5. Salir");
+            mostrarMensaje("5. Opciones adicionales");
+            mostrarMensaje("6. Salir");
             char opcion = scanner.nextLine().charAt(0);
 
             if(opcion == '1' || opcion == '2' || opcion == '3' || opcion == '4' || opcion == '5'){
-                //manejarSeleccion(opcion);
+                switch(opcion){
+                    case '1':
+                        biblioteca.gestionarBibliotecarios();
+                    
+                    case '2':
+                        biblioteca.gestionarEstudiantes();
+                    case '3':
+                        biblioteca.gestionarLibros();
+        
+                    case '4':
+                        biblioteca.gestionarPrestamos();
+        
+                    case '5':
+                        biblioteca.opcionesAdicionales();
+                }
+        
             }
 
-            else if(opcion == '5'){
+            else if(opcion == '6'){
                 mostrarMensaje("Saliendo..."+ "\n" + "------------------------------------------------------------------------------------");
             }
+
+            else{
+                mostrarMensaje("Ingrese una opción valida.");
+            }
         }
-    }
-
-    public void manejarSeleccion(char opcion){
-        switch(opcion){
-            case '1':
-            
-            case '2':
-
-            case '3':
-
-        }
-
-    }
-
-
-    public static String ingresarTexto(String mensaje){
-        Scanner scanner = new Scanner(System.in);
-        String texto = scanner.nextLine();
-        return texto;
-    }
-
-    
-    public static int ingresarEntero(String mensaje){
-        Scanner scanner = new Scanner(System.in);
-        int entero = scanner.nextInt();
-        return entero;
     }
 
     public static void mostrarMensaje(String mensaje){
@@ -59,31 +53,35 @@ public class App{
 
 //--------------------------Banco de datos de prueba genéricos----------------------//
 
-    Libro libro1 = new Libro("Cien años de soledad", "2828", "CX32", 15, "Gabriel Garcia Marquez ",
+    Libro libro1 = new Libro("Cien años de soledad", "282", "GG32", 15, "Gabriel Garcia Marquez ",
      "Norma", LocalDate.of(1967, 05, 4) , 1500);
 
     Libro libro2 = new Libro("Maria", "398", "JI23", 11, "Jorge Isaacs ",
      "Norma", LocalDate.of(1867, 05, 9) , 1300);
 
-    Libro libro3 = new Libro("El amor en los tiempos del colera", "6777", "GG13", 16, "Gabriel Garcia Marquez  ",
+    Libro libro3 = new Libro("El amor en los tiempos del cólera", "677", "GG13", 16, "Gabriel Garcia Marquez  ",
      "Norma", LocalDate.of(1867, 1, 1) , 1100);
 
-    Libro libro4 = new Libro("El hombre en busca de sentido", "7853", "HU17", 9, "Viktor frankl  ",
+    Libro libro4 = new Libro("El hombre en busca de sentido", "785", "VF17", 9, "Viktor frankl  ",
      "Herder", LocalDate.of(1946, 1, 1) , 1000);
+
+    Libro libro5 = new Libro("El arte de la guerra", "993", "SZ89", 17, "Sun Tzu",
+     "Unknow", LocalDate.of(1, 1, 1) , 1600);
 
     Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", "3217896556",
      "juliAlva@gmail.com", 23);
 
-
-     Bibliotecario bibliotecario2 = new Bibliotecario("Andres Parra", "1234568", "31229876556",
+    Bibliotecario bibliotecario2 = new Bibliotecario("Andres Parra", "12345678", "3123456556",
      "Andypaa@gmail.com", 10);
 
     Estudiante estudiante1 = new Estudiante("Cristian Camilo Bonilla", 
      "1115192851", "31882161658" , "cristianc@gmail.com", 18);
      
+    Estudiante estudiante2 = new Estudiante("Nicolas Orozco Osorio", 
+     "1092852380", "3146138755" , "nicooo@gmail.com", 33);
 
-     Estudiante estudiante2 = new Estudiante("Cristian Camilo Bonilla", 
-     "1115192851", "31882161658" , "cristianc@gmail.com", 18);
+    Estudiante estudiante3 = new Estudiante("Camila Alzate", 
+     "11156", "3145678990" , "camilaxdr@gyahoo.com", 19);
 //----------------------------------------------------------------------------------//
 
 

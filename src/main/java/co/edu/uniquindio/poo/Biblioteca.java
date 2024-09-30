@@ -159,7 +159,7 @@ public class Biblioteca {
     public void crearNuevoBibliotecario() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Nombre: ");
+        mostrarMensaje("Nombre: ");
         String nombre = scanner.nextLine();
 
         String cedula;
@@ -168,17 +168,17 @@ public class Biblioteca {
             cedula = scanner.nextLine();
             
             if (verificarBibliotecario(cedula)) {
-                System.out.println("Ya existe un bibliotecario con esa cédula. Por favor, ingrese una cédula diferente.");
+                mostrarMensaje("Ya existe un bibliotecario con esa cédula. Por favor, ingrese una cédula diferente.");
             }
         } while (verificarBibliotecario(cedula));
 
-        System.out.println("Teléfono: ");
+        mostrarMensaje("Teléfono: ");
         String telefono = scanner.nextLine();
 
-        System.out.println("Correo: ");
+        mostrarMensaje("Correo: ");
         String correo = scanner.nextLine();
 
-        System.out.println("Años de antigüedad: ");
+        mostrarMensaje("Años de antigüedad: ");
         int antiguedad = scanner.nextInt();
 
         Bibliotecario bibliotecario = new Bibliotecario(nombre, cedula, telefono, correo, antiguedad);
@@ -215,12 +215,14 @@ public class Biblioteca {
      * Método para mostrar los detalles de un bibliotecario dada su cédula
      * @param cedula del bibliotecario
      */
-    public void mostrarDetallesBibliotecario(String cedula) {
+    public String mostrarDetallesBibliotecario(String cedula) {
+        String detalles = "";
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedula)) {
-                System.out.println(bibliotecario);
+                detalles += bibliotecario.toString();
             }
         }
+        return detalles;
     }
 
     /**
@@ -246,26 +248,26 @@ public class Biblioteca {
     public void crearNuevoEstudiante() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nombre: ");
+        mostrarMensaje("Nombre: ");
         String nombre = scanner.nextLine();
 
         String cedula;
         do {
-            System.out.println("Cédula: ");
+            mostrarMensaje("Cédula: ");
             cedula = scanner.nextLine();
             
             if (verificarEstudiante(cedula)) {
-                System.out.println("Ya existe un estudiante con esa cédula. Por favor, ingrese una cédula diferente.");
+                mostrarMensaje("Ya existe un estudiante con esa cédula. Por favor, ingrese una cédula diferente.");
             }
         } while (verificarEstudiante(cedula));System.out.print("Cédula: ");
 
-        System.out.print("Teléfono: ");
+        mostrarMensaje("Teléfono: ");
         String telefono = scanner.nextLine();
 
-        System.out.print("Correo: ");
+        mostrarMensaje("Correo: ");
         String correo = scanner.nextLine();
 
-        System.out.print("Edad: ");
+        mostrarMensaje("Edad: ");
         int edad = scanner.nextInt();
 
         Estudiante estudiante = new Estudiante(nombre, cedula, telefono, correo, edad);
@@ -333,36 +335,36 @@ public class Biblioteca {
     public void crearNuevoLibro() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Título: ");
+        mostrarMensaje("Título: ");
         String titulo = scanner.nextLine();
 
-        System.out.print("Código: ");
+        mostrarMensaje("Código: ");
         String codigo;
         do {
-            System.out.println("Cédula: ");
+            mostrarMensaje("Cédula: ");
             codigo = scanner.nextLine();
             
             if (verificarLibro(codigo)) {
-                System.out.println("Ya existe un libro con ese código. Por favor, ingrese un código diferente.");
+                mostrarMensaje("Ya existe un libro con ese código. Por favor, ingrese un código diferente.");
             }
         } while (verificarLibro(codigo));System.out.print("Código: ");
 
-        System.out.print("ISBN: ");
+        mostrarMensaje("ISBN: ");
         String isbn = scanner.nextLine();
 
-        System.out.print("Autor: ");
+        mostrarMensaje("Autor: ");
         String autor = scanner.nextLine();
 
-        System.out.print("Editorial: ");
+        mostrarMensaje("Editorial: ");
         String editorial = scanner.nextLine();
 
-        System.out.print("Fecha de publicación (aaaa-mm-dd): ");
+        mostrarMensaje("Fecha de publicación (aaaa-mm-dd): ");
         LocalDate fecha = LocalDate.parse(scanner.nextLine());
 
-        System.out.print("Costo: ");
+        mostrarMensaje("Costo: ");
         double costo = scanner.nextDouble();
 
-        System.out.print("Unidades Disponibles: ");
+        mostrarMensaje("Unidades Disponibles: ");
         int unidadesDisponibles = scanner.nextInt();
 
         Libro libro = new Libro(titulo, codigo, isbn, unidadesDisponibles, autor, editorial, fecha, costo);
@@ -419,42 +421,42 @@ public class Biblioteca {
         for (Libro libro : libros) {
 
             if (libro.getCodigo().equals(codigo)) {
-                System.out.println("A continuación, ingrese los nuevos datos del libro:");
+                mostrarMensaje("A continuación, ingrese los nuevos datos del libro:");
 
-                System.out.print("Título: ");
+                mostrarMensaje("Título: ");
                 String nuevoTitulo = scanner.nextLine();
                 libro.setTitulo(nuevoTitulo);
 
-                System.out.println("ISBN: ");
+                mostrarMensaje("ISBN: ");
                 String nuevoIsbn = scanner.nextLine();
                 libro.setIsbn(nuevoIsbn);
 
-                System.out.println("Autor: ");
+                mostrarMensaje("Autor: ");
                 String nuevoAutor = scanner.nextLine();
                 libro.setAutor(nuevoAutor);
 
-                System.out.println("Editorial: ");
+                mostrarMensaje("Editorial: ");
                 String nuevaEditorial = scanner.nextLine();
                 libro.setEditorial(nuevaEditorial);
 
-                System.out.println("Nueva fecha de publicación (aaaa-mm-dd):");
+                mostrarMensaje("Nueva fecha de publicación (aaaa-mm-dd):");
                 LocalDate nuevaFecha = LocalDate.parse(scanner.nextLine());
                 libro.setFecha(nuevaFecha);
 
-                System.out.println("Nuevo costo:");
+                mostrarMensaje("Nuevo costo:");
                 double nuevoCosto = scanner.nextDouble();
                 libro.setCosto(nuevoCosto);
 
-                System.out.println("Nuevas unidades disponibles:");
+                mostrarMensaje("Nuevas unidades");
                 int nuevasUnidades = scanner.nextInt();
                 libro.setUnidadesDisponibles(nuevasUnidades);
 
                 libro.actualizarEstado(nuevasUnidades);
 
-                System.out.println("Los datos del libro se han actualizado exitosamente.");
+                mostrarMensaje("Los datos del libro se han actualizado exitosamente.");
             }
         }
-        System.out.println("No se encontró ningún libro con el código especificado.");
+        mostrarMensaje("No se encontró ningún libro con el código especificado.");
     }
 
     /**
@@ -479,51 +481,98 @@ public class Biblioteca {
      */
     public void crearNuevoPrestamo() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Código: ");
+    
+        mostrarMensaje("Código: ");
         String codigo = scanner.nextLine();
-
-        System.out.println("Ingrese la cédula del Bibliotecario: ");
+    
+        mostrarMensaje("Ingrese la cédula del Bibliotecario: ");
         String cedulaBibliotecario = scanner.nextLine();
         Bibliotecario bibliotecarioPrestamo = null;
-
+    
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedulaBibliotecario)) {
                 bibliotecarioPrestamo = bibliotecario;
                 break;
             }
         }
-
+    
         if (bibliotecarioPrestamo == null) {
-            System.out.println("No se encontró un bibliotecario con esa cédula.");
+            mostrarMensaje("No se encontró un bibliotecario con esa cédula.");
             return;
         }
-
-        System.out.println("Ingrese la cédula del Estudiante: ");
+    
+        mostrarMensaje("Ingrese la cédula del Estudiante: ");
         String cedulaEstudiante = scanner.nextLine();
         Estudiante estudiantePrestamo = null;
-
+    
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getCedula().equals(cedulaEstudiante)) {
                 estudiantePrestamo = estudiante;
                 break;
             }
         }
-
+    
         if (estudiantePrestamo == null) {
-            System.out.println("No se encontró un estudiante con esa cédula.");
+            mostrarMensaje("No se encontró un estudiante con esa cédula.");
             return;
         }
-
+    
         Prestamo prestamo = new Prestamo(LocalDate.now(), codigo, bibliotecarioPrestamo, estudiantePrestamo);
-
         bibliotecarioPrestamo.getPrestamos().add(prestamo);
         estudiantePrestamo.getPrestamos().add(prestamo);
-
         agregarPrestamo(prestamo);
-
-        System.out.println("Préstamo creado exitosamente.");
+    
+        // Bucle para agregar DetallePrestamo
+        boolean agregarMasDetalles = true;
+    
+        while (agregarMasDetalles) {
+            mostrarMensaje("Ingrese el código del libro que desea prestar: ");
+            String codigoLibro = scanner.nextLine();
+            Libro libroPrestamo = null;
+    
+            for (Libro libro : libros) {
+                if (libro.getCodigo().equals(codigoLibro)) {
+                    libroPrestamo = libro;
+                    break;
+                }
+            }
+    
+            if (libroPrestamo == null) {
+                mostrarMensaje("No se encontró un libro con ese código.");
+                return;
+            }
+    
+            mostrarMensaje("Ingrese la cantidad de unidades del libro: ");
+            int cantidad = scanner.nextInt();
+            scanner.nextLine();  // Limpiar el buffer de entrada después de leer un entero
+    
+            // Crear el objeto DetallePrestamo
+            DetallePrestamo detalle = new DetallePrestamo(libroPrestamo, cantidad);
+    
+            // Llamar al método agregarLibroADetalle de la instancia
+            detalle.agregarLibroADetalle(cantidad, libroPrestamo);
+    
+            // Agregar el detalle al préstamo
+            prestamo.agregarDetallePrestamo(detalle);
+    
+            mostrarMensaje("Detalle agregado exitosamente.");
+    
+            // Preguntar si desea agregar otro detalle
+            mostrarMensaje("¿Desea agregar otro detalle al préstamo? (Si/No): ");
+            String respuesta = scanner.nextLine();
+    
+            if (respuesta.equalsIgnoreCase("No")) {
+                agregarMasDetalles = false;
+            }
+        }
+    
+        bibliotecarioPrestamo.getPrestamos().add(prestamo);
+        estudiantePrestamo.getPrestamos().add(prestamo);
+        agregarPrestamo(prestamo);
+    
+        mostrarMensaje("Préstamo creado exitosamente con sus detalles.");
     }
+    
 
     /**
      * 
@@ -608,8 +657,7 @@ public class Biblioteca {
                 prestamo.setFechaEntrega(LocalDate.now());
                 double total = prestamo.calcularTotal();
                 prestamo.setTotal(total);
-                System.out.println("Prestamo entregado correctamente (" + LocalDate.now()
-                        + "), el costo total del prestamo es: $" + prestamo.getTotal());
+                mostrarMensaje("Prestamo entregado correctamente (" + LocalDate.now()+ "), el costo total del prestamo es: $" + prestamo.getTotal());
             }
         }
     }
@@ -625,7 +673,7 @@ public class Biblioteca {
             cantidadPrestamos.append(bibliotecario.getNombre() + ": ");
             cantidadPrestamos.append(bibliotecario.obtenerCantidadPrestamosRealizados() + "\n");
         }
-        System.out.println(cantidadPrestamos);
+        System.out.print(cantidadPrestamos);
     }
 
 
@@ -645,7 +693,7 @@ public class Biblioteca {
             }
         }
     
-        System.out.println("El estudiante con mas prestamos es: " + estudianteConMasPrestamos);
+        mostrarMensaje("El estudiante con mas prestamos es: " + estudianteConMasPrestamos);
     }
 
 
@@ -656,7 +704,7 @@ public class Biblioteca {
         for (Bibliotecario bibliotecario : bibliotecarios) {
             totalPagar += bibliotecario.getSalario();
         }
-        System.out.println("El total a pagar a los bibliotecarios es: $" + totalPagar); 
+        mostrarMensaje("El total a pagar a los bibliotecarios es: $" + totalPagar); 
         return totalPagar;
     }
 
@@ -671,11 +719,228 @@ public class Biblioteca {
             subTotal += prestamo.getTotal();
         }
         recaudo = subTotal - totalPagarBibliotecarios();
-        System.out.println("El recaudo total de la biblioteca es de: $" + recaudo);
+        mostrarMensaje("El recaudo total de la biblioteca es de: $" + recaudo);
     }
 
+    // ------------------------------------------------------------//
 
 
+    // -----Métodos para manejar selección del usuario-------------//
+
+    public void gestionarBibliotecarios() {
+        Scanner scanner = new Scanner(System.in);
+        boolean activo = true;
+    
+        while (activo) {
+            mostrarMensaje("\n" + "¿Qué desea hacer?");
+            mostrarMensaje("1. Crear bibliotecario");
+            mostrarMensaje("2. Buscar bibliotecario");
+            mostrarMensaje("3. Eliminar bibliotecario");
+            mostrarMensaje("4. Volver");
+            
+            char opcion = scanner.nextLine().charAt(0);
+    
+            switch (opcion) {
+                case '1':
+                    crearNuevoBibliotecario();
+                    break;
+                case '2':
+                    mostrarMensaje("Ingrese la cedula del bibliotecario que desea buscar: ");
+                    String cedulaBuscar = scanner.nextLine();
+                    System.out.println(mostrarDetallesBibliotecario(cedulaBuscar));
+                    break;
+                case '3':
+                    mostrarMensaje("Ingrese la cedula del bibliotecario que desea eliminar: ");
+                    String cedulaEliminar = scanner.nextLine();
+                    eliminarBibliotecario(cedulaEliminar);
+                    break;
+                case '4':
+                    activo = false;
+                    mostrarMensaje("Volviendo al menú principal...");
+                    break;
+                default:
+                    mostrarMensaje("Opción no válida. Intente nuevamente.");
+                    break;
+            }
+        }
+    }
+    
+
+    public void gestionarEstudiantes(){
+        Scanner scanner = new Scanner(System.in);
+        boolean activo = true;
+    
+        while (activo) {
+            mostrarMensaje("\n" + "¿Qué desea hacer?");
+            mostrarMensaje("1. Crear estudiante");
+            mostrarMensaje("2. Buscar estudiante");
+            mostrarMensaje("3. Eliminar estudiante");
+            mostrarMensaje("4. Volver");
+            
+            char opcion = scanner.nextLine().charAt(0);
+    
+            switch (opcion) {
+                case '1':
+                    crearNuevoEstudiante();
+                    break;
+                case '2':
+                    mostrarMensaje("Ingrese la cedula del estudiante que desea buscar: ");
+                    String cedulaBuscar = scanner.nextLine();
+                    mostrarDetallesEstudiante(cedulaBuscar);
+                    break;
+                case '3':
+                    mostrarMensaje("Ingrese la cedula del estudiante que desea eliminar: ");
+                    String cedulaEliminar = scanner.nextLine();
+                    eliminarEstudiante(cedulaEliminar);
+                    break;
+                case '4':
+                    activo = false;
+                    mostrarMensaje("Volviendo al menú principal...");
+                    break;
+                default:
+                    mostrarMensaje("Opción no válida. Intente nuevamente.");
+                    break;
+            }
+        }
+    }
+
+    public void gestionarLibros(){
+        Scanner scanner = new Scanner(System.in);
+        boolean activo = true;
+    
+        while (activo) {
+            mostrarMensaje("\n" + "¿Qué desea hacer?");
+            mostrarMensaje("1. Crear libro");
+            mostrarMensaje("2. Buscar libro");
+            mostrarMensaje("3. Eliminar libro");
+            mostrarMensaje("4. Sobreescribir libro");
+            mostrarMensaje("5. Volver");
+            
+            char opcion = scanner.nextLine().charAt(0);
+    
+            switch (opcion) {
+                case '1':
+                    crearNuevoLibro();
+                    break;
+                case '2':
+                    mostrarMensaje("Ingrese el codigo del libro que desea buscar: ");
+                    String codigoBuscar = scanner.nextLine();
+                    mostrarDetallesLibro(codigoBuscar);
+                    break;
+                case '3':
+                    mostrarMensaje("Ingrese el codigo del libro que desea eliminar: ");
+                    String codigoEliminar = scanner.nextLine();
+                    eliminarLibro(codigoEliminar);
+                    break;
+                case '4':
+                    mostrarMensaje("Ingrese el código del libro que desea sobreescribir: ");
+                    String codigoSobreescribir = scanner.nextLine();
+                    eliminarBibliotecario(codigoSobreescribir);
+                    break;
+                case '5':
+                    activo = false;
+                    mostrarMensaje("Volviendo al menú principal...");
+                default:
+                    mostrarMensaje("Opción no válida. Intente nuevamente.");
+                    break;
+            }
+        }
+    }
+
+    public void gestionarPrestamos(){
+        Scanner scanner = new Scanner(System.in);
+        boolean activo = true;
+    
+        while (activo) {
+            mostrarMensaje("\n" + "¿Qué desea hacer?");
+            mostrarMensaje("1. Crear prestamo");
+            mostrarMensaje("2. Buscar prestamo");
+            mostrarMensaje("3. Eliminar prestamo");
+            mostrarMensaje("4. Entregar prestamo");
+            mostrarMensaje("5. Volver");
+            
+            char opcion = scanner.nextLine().charAt(0);
+    
+            switch (opcion) {
+                case '1':
+                    crearNuevoPrestamo();
+                    
+                    break;
+                case '2':
+                    mostrarMensaje("Ingrese el codigo del prestamo que desea buscar: ");
+                    String codigoBuscar = scanner.nextLine();
+                    consultarPrestamo(codigoBuscar);
+                    break;
+                case '3':
+                    mostrarMensaje("Ingrese el codigo del prestamo que desea eliminar: ");
+                    String codigoEliminar = scanner.nextLine();
+                    eliminarPrestamo(codigoEliminar);
+                    break;
+                    
+                case '4':
+                    mostrarMensaje("Ingrese el codigo del prestamo que desea buscar: ");
+                    String codigoEntregar = scanner.nextLine();
+                    entregarPrestamo(codigoEntregar);
+                break;
+                    
+                case '5':
+                    activo = false;
+                    mostrarMensaje("Volviendo al menú principal...");
+                    break;
+                default:
+                    mostrarMensaje("Opción no válida. Intente nuevamente.");
+                    break;
+            }
+        }
+    }
+
+    public void opcionesAdicionales(){
+        Scanner scanner = new Scanner(System.in);
+        boolean activo = true;
+    
+        while (activo) {
+            mostrarMensaje("\n" + "¿Qué desea hacer?");
+            mostrarMensaje("1. Cantidad de prestamos de cada empleado");
+            mostrarMensaje("2. Mostrar datos del estudiante con más prestamos");
+            mostrarMensaje("3. Mostrar el total de dinero recaudado por la biblioteca");
+            mostrarMensaje("4. Calcular el dinero a pagar a los bibliotecarios");
+            mostrarMensaje("5. Volver");
+            
+            char opcion = scanner.nextLine().charAt(0);
+    
+            switch (opcion) {
+                case '1':
+                    obtenerCantidadPrestamosBibliotecario();
+                    break;
+                case '2':
+                    obtenerEstudianteConMasPrestamos();
+                    break;
+                case '3':
+                    totalRecaudoBiblioteca();
+                    break;
+                case '4':
+                    totalPagarBibliotecarios();
+                    break;
+                case '5':
+                    activo = false;
+                    mostrarMensaje("Volviendo al menú principal...");
+                    break;
+                default:
+                    mostrarMensaje("Opción no válida. Intente nuevamente.");
+                    break;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------//
+
+    /**
+     * Método para imprimir una cadena de texto
+     * @param mensaje
+     */
+    public static void mostrarMensaje(String mensaje){
+        System.out.println(mensaje);
+    }
 
     /**
      * Método toString de la clase Biblioteca

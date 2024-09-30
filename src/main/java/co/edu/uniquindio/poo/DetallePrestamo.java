@@ -98,7 +98,7 @@ public class DetallePrestamo {
      * @param cantidad de unidades solicitadas del libro
      * @param libro    a prestar
      */
-    public void agregarLibroADetalle(String codigo, int cantidad, Libro libro) {
+    public void agregarLibroADetalle(int cantidad, Libro libro) {
         if (verificarDisponibilidadLibro(cantidad, libro)) {
             setLibro(libro);
             actualizarUnidadesLibro(cantidad);
