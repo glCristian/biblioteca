@@ -176,8 +176,8 @@ public class Prestamo {
     public String toString() {
         return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", costoDia="
                 + ", codigo=" + codigo + ", bibliotecario=" + bibliotecario + ", estudiante =" + estudiante
-                + "listaDetallesPrestamo="
-                + listaDetallesPrestamo + ", total=" + total + "]";
+                + "listaDetallesPrestamo=" + "\n"
+                + listaDetallesPrestamo + "\ntotal=" + total + "]";
     }
 
 }

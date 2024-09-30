@@ -120,7 +120,7 @@ public class DetallePrestamo {
      */
     @Override
     public String toString() {
-        return "DetallePrestamo [subtotal=" + subtotal + ", cantidad=" + cantidad + ", libro=" + libro + "]";
+        return "DetallePrestamo [subtotal=" + subtotal + ", cantidad=" + cantidad + ", libro=" + libro + "]" + "\n";
     }
 
 }

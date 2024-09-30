@@ -607,7 +607,7 @@ public class Biblioteca {
     public void consultarPrestamo(String codigo) {
         for (Prestamo prestamo : prestamos) {
             if (prestamo.getCodigo().equals(codigo)) {
-                System.out.println(prestamo.toString());
+                System.out.println(prestamo);
             }
         }
     }
@@ -878,7 +878,7 @@ public class Biblioteca {
                     break;
                     
                 case '4':
-                    mostrarMensaje("Ingrese el codigo del prestamo que desea buscar: ");
+                    mostrarMensaje("Ingrese el codigo del prestamo que desea entregar: ");
                     String codigoEntregar = scanner.nextLine();
                     entregarPrestamo(codigoEntregar);
                 break;
@@ -952,4 +952,7 @@ public class Biblioteca {
                 + cantidadLibros + "]";
     }
 
+
+
+    
 }
