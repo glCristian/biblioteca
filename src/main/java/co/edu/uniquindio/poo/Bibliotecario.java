@@ -21,7 +21,7 @@ public class Bibliotecario extends Persona {
         super(nombre, cedula, telefono, correo);
         this.antiguedad = antiguedad;
         prestamos = new LinkedList<>();
-        this.salario = calcularSalario(antiguedad);
+        this.salario = calcularSalario();
     }
 
     // --------Métodos Get y Set de la clase Bibliotecario----------//
@@ -84,18 +84,21 @@ public class Bibliotecario extends Persona {
 
     /**
      * Método para calcular el salario de un bibliotecario
-     * 
      * @param antiguedad del bibliotecario
      * @return total
      */
-    public double calcularSalario(int antiguedad) {
-        double total = 0;
+    public double calcularSalario() {
+        double salarioTotal = 0;
+    
         for (Prestamo prestamo : prestamos) {
-            double valorPrestamo = prestamo.getTotal();
-            total += valorPrestamo * 0.2;
+            double subTotal = prestamo.getTotal()*0.2;
+            double totalGanancia = subTotal + ((subTotal*0.02)*antiguedad);
+            salarioTotal += totalGanancia;
         }
-        total += (total * 0.2) * antiguedad;
-        return total;
+    
+        setSalario(salarioTotal);
+        
+        return salarioTotal;
     }
 
     /**
@@ -112,7 +115,7 @@ public class Bibliotecario extends Persona {
      */
     @Override
     public String toString() {
-        return "Bibliotecario [" + super.toString() + ", salario=" + salario + ", antiguedad=" + antiguedad
-                + ", prestamos=" + prestamos + "]";
+        return "Bibliotecario [" + super.toString() + ", salario=" + salario + ", antiguedad=" + antiguedad + "\n" 
+        + "prestamos=" + "\n" + prestamos + "]";
     }
 }

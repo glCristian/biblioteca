@@ -102,8 +102,7 @@ public class Persona {
      */
     @Override
     public String toString() {
-        return "Persona [nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + ", correo=" + correo
-                + "]";
+        return "nombre=" + nombre + ", cedula=" + cedula + ", telefono=" + telefono + ", correo=" + correo;
     }
 
 }

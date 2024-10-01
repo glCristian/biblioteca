@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo;
 
+import java.util.Scanner;
+
 public class DetallePrestamo {
     private Libro libro;
     private int cantidad;
@@ -77,8 +79,7 @@ public class DetallePrestamo {
     // ----------------------------------------------------------------------------------------------------------
 
     /**
-     * Método para modificar la disponibilidad del libro a prestar
-     * 
+     * Método para verificar la disponibilidad del libro a prestar
      * @param cantidad de unidades solicitadas
      * @param libro    a prestar
      * @return centinela
@@ -91,28 +92,42 @@ public class DetallePrestamo {
         return centinela;
     }
 
-    /**
-     * Método para agregar el libro solicitado a un detalle del prestamo
-     * 
-     * @param codigo   del libro
+  /**
+     * Método para agregar el libro solicitado a un detalle del préstamo.
+     * Si la cantidad solicitada es mayor que las unidades disponibles, se
+     * pedirá nuevamente la cantidad hasta que sea válida.
      * @param cantidad de unidades solicitadas del libro
      * @param libro    a prestar
+     * @param scanner  reutilizado de la clase principal
      */
-    public void agregarLibroADetalle(int cantidad, Libro libro) {
-        if (verificarDisponibilidadLibro(cantidad, libro)) {
-            setLibro(libro);
-            actualizarUnidadesLibro(cantidad);
+    public void agregarLibroADetalle(int cantidad, Libro libro, Scanner scanner) {
+        boolean cantidadValida = false;
+
+        while (!cantidadValida) {
+
+            if (verificarDisponibilidadLibro(cantidad, libro)) {
+                setLibro(libro);
+                setCantidad(cantidad);
+                actualizarUnidadesLibro(cantidad);
+                subtotal = libro.getCosto() * cantidad;
+                cantidadValida = true;
+
+            } else {
+                System.out.println("No hay suficientes unidades disponibles del libro solicitado. Por favor, ingrese una cantidad menor.");
+                System.out.print("Ingrese la cantidad de unidades del libro: ");
+                cantidad = scanner.nextInt();
+            }
         }
     }
 
     /**
      * Método para actualizar las unidades disponibles del libro luego de realizar
      * el prestamo
-     * 
      * @param cantidad de unidades solicitadas
      */
     public void actualizarUnidadesLibro(int cantidad) {
         libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+        libro.actualizarEstado(libro.getUnidadesDisponibles());
     }
 
     /**
@@ -120,7 +135,7 @@ public class DetallePrestamo {
      */
     @Override
     public String toString() {
-        return "DetallePrestamo [subtotal=" + subtotal + ", cantidad=" + cantidad + ", libro=" + libro + "]" + "\n";
+        return "DetallePrestamo [subtotal=" + subtotal + ", cantidad=" + cantidad + ", libro=" + libro.getTitulo() + "]" + "\n";
     }
 
 }

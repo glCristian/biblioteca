@@ -27,7 +27,7 @@ public class App {
         biblioteca.agregarLibro(libro4);
 
         Libro libro5 = new Libro("El arte de la guerra", "993", "SZ89", 17, "Sun Tzu",
-                "Unknow", LocalDate.of(1, 1, 1), 1600);
+                "Unknown", LocalDate.of(1, 1, 1), 1600);
         biblioteca.agregarLibro(libro5);
 
         Bibliotecario bibliotecario1 = new Bibliotecario("Julian Alvarez", "1115167", "3217896556",
@@ -49,6 +49,7 @@ public class App {
         Estudiante estudiante3 = new Estudiante("Camila Alzate",
                 "11156", "3145678990", "camilaxdr@gyahoo.com", 19);
         biblioteca.agregarEstudiante(estudiante3);
+
         // ----------------------------------------------------------------------------------//
 
         boolean activo = true;
@@ -64,20 +65,26 @@ public class App {
             char opcion = scanner.nextLine().charAt(0);
 
             if (opcion == '1' || opcion == '2' || opcion == '3' || opcion == '4' || opcion == '5') {
-                switch (opcion) {
+                switch (opcion) { 
                     case '1':
                         biblioteca.gestionarBibliotecarios();
+                        break;
 
                     case '2':
                         biblioteca.gestionarEstudiantes();
+                        break;
+                
                     case '3':
                         biblioteca.gestionarLibros();
+                        break;
 
                     case '4':
                         biblioteca.gestionarPrestamos();
+                        break;
 
                     case '5':
                         biblioteca.opcionesAdicionales();
+                        break;
                 }
 
             }

@@ -174,10 +174,10 @@ public class Prestamo {
      */
     @Override
     public String toString() {
-        return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", costoDia="
-                + ", codigo=" + codigo + ", bibliotecario=" + bibliotecario + ", estudiante =" + estudiante
+        return "Prestamo [fechaPrestamo=" + fechaPrestamo + ", fechaEntrega=" + fechaEntrega + ", codigo=" + codigo + "\n"
+                + "Bibliotecario encargado=" + bibliotecario.getNombre() + ", Estudiante que lo realiza =" + estudiante.getNombre() + "\n"
                 + "listaDetallesPrestamo=" + "\n"
-                + listaDetallesPrestamo + "\ntotal=" + total + "]";
+                + listaDetallesPrestamo.toString() + "\ntotal=" + total + "]" + "\n \n";
     }
 
 }

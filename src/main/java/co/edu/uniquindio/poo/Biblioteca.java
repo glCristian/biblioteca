@@ -477,18 +477,18 @@ public class Biblioteca {
     // ---------------------CRUD Prestamo--------------------------//
 
     /**
-     * 
+     * Método para crear un nuevo préstamo con sus detalles ya agregarlo automáticamente a la lista de prestamos
      */
     public void crearNuevoPrestamo() {
         Scanner scanner = new Scanner(System.in);
     
-        mostrarMensaje("Código: ");
+        mostrarMensaje("Código del préstamo: ");
         String codigo = scanner.nextLine();
     
         mostrarMensaje("Ingrese la cédula del Bibliotecario: ");
         String cedulaBibliotecario = scanner.nextLine();
         Bibliotecario bibliotecarioPrestamo = null;
-    
+        
         for (Bibliotecario bibliotecario : bibliotecarios) {
             if (bibliotecario.getCedula().equals(cedulaBibliotecario)) {
                 bibliotecarioPrestamo = bibliotecario;
@@ -504,7 +504,7 @@ public class Biblioteca {
         mostrarMensaje("Ingrese la cédula del Estudiante: ");
         String cedulaEstudiante = scanner.nextLine();
         Estudiante estudiantePrestamo = null;
-    
+        
         for (Estudiante estudiante : estudiantes) {
             if (estudiante.getCedula().equals(cedulaEstudiante)) {
                 estudiantePrestamo = estudiante;
@@ -519,17 +519,17 @@ public class Biblioteca {
     
         Prestamo prestamo = new Prestamo(LocalDate.now(), codigo, bibliotecarioPrestamo, estudiantePrestamo);
         bibliotecarioPrestamo.getPrestamos().add(prestamo);
+        bibliotecarioPrestamo.calcularSalario();
         estudiantePrestamo.getPrestamos().add(prestamo);
         agregarPrestamo(prestamo);
     
-        // Bucle para agregar DetallePrestamo
         boolean agregarMasDetalles = true;
     
         while (agregarMasDetalles) {
             mostrarMensaje("Ingrese el código del libro que desea prestar: ");
             String codigoLibro = scanner.nextLine();
             Libro libroPrestamo = null;
-    
+            
             for (Libro libro : libros) {
                 if (libro.getCodigo().equals(codigoLibro)) {
                     libroPrestamo = libro;
@@ -543,41 +543,28 @@ public class Biblioteca {
             }
     
             mostrarMensaje("Ingrese la cantidad de unidades del libro: ");
-            int cantidad = scanner.nextInt();
-            scanner.nextLine();  // Limpiar el buffer de entrada después de leer un entero
+            int cantidad = Integer.parseInt(scanner.nextLine());
     
-            // Crear el objeto DetallePrestamo
             DetallePrestamo detalle = new DetallePrestamo(libroPrestamo, cantidad);
-    
-            // Llamar al método agregarLibroADetalle de la instancia
-            detalle.agregarLibroADetalle(cantidad, libroPrestamo);
-    
-            // Agregar el detalle al préstamo
+            detalle.agregarLibroADetalle(cantidad, libroPrestamo, scanner);
             prestamo.agregarDetallePrestamo(detalle);
     
             mostrarMensaje("Detalle agregado exitosamente.");
     
-            // Preguntar si desea agregar otro detalle
             mostrarMensaje("¿Desea agregar otro detalle al préstamo? (Si/No): ");
             String respuesta = scanner.nextLine();
     
-            if (respuesta.equalsIgnoreCase("No")) {
+            if (respuesta.equalsIgnoreCase("no")){
                 agregarMasDetalles = false;
             }
         }
-    
-        bibliotecarioPrestamo.getPrestamos().add(prestamo);
-        estudiantePrestamo.getPrestamos().add(prestamo);
-        agregarPrestamo(prestamo);
-    
-        mostrarMensaje("Préstamo creado exitosamente con sus detalles.");
     }
     
 
     /**
-     * 
+     * Método para evitar que existan préstamos duplicados
      * @param codigo
-     * @return
+     * @return estado del centinela(True/False)
      */
     public boolean verificarPrestamo(String codigo) {
         boolean centinela = false;
@@ -591,7 +578,7 @@ public class Biblioteca {
     }
 
     /**
-     * 
+     * Método para agregar un préstamo a lista de prestamos
      * @param prestamo
      */
     public void agregarPrestamo(Prestamo prestamo) {
@@ -601,7 +588,7 @@ public class Biblioteca {
     }
 
     /**
-     * 
+     * Método para consultar la información de un préstamo dado su código
      * @param codigo
      */
     public void consultarPrestamo(String codigo) {
@@ -613,7 +600,7 @@ public class Biblioteca {
     }
 
     /**
-     * 
+     * Método para eliminar un préstamo dado su código
      * @param codigo
      */
     public void eliminarPrestamo(String codigo) {
@@ -627,6 +614,7 @@ public class Biblioteca {
     // ------------------------------------------------------------//
 
 
+    // -----------------Métodos adicionales del taller-------------//
     /**
      * Método para consultar la cantidad de prestamos en la cuál está incluido un
      * libro
@@ -648,7 +636,6 @@ public class Biblioteca {
 
     /**
      * Método para entregar un prestamo con fecha del día actual
-     * 
      * @param codigo del prestamo a entregar
      */
     public void entregarPrestamo(String codigo) {
@@ -697,21 +684,25 @@ public class Biblioteca {
     }
 
 
-    // Agregar un método para calcular el total de dinero a pagar a los
-    // bibliotecarios
-    public double totalPagarBibliotecarios (){
+    /**
+     * Método que calcula el dinero total a pagar a los bibliotecarios
+     */
+    public double totalPagarBibliotecarios () {
         double totalPagar = 0;
+    
         for (Bibliotecario bibliotecario : bibliotecarios) {
+            bibliotecario.calcularSalario();
             totalPagar += bibliotecario.getSalario();
         }
+    
         mostrarMensaje("El total a pagar a los bibliotecarios es: $" + totalPagar); 
         return totalPagar;
     }
 
 
-
-    // Agregar un método para calcular el total de dinero recaudado por la
-    // biblioteca, teniendo en cuenta el dinero a pagar a los bibliotecarios
+    /**
+     * Método que calcula el recaudo total de la biblioteca
+     */
     public void totalRecaudoBiblioteca(){
         double subTotal = 0;
         double  recaudo = 0;
@@ -727,6 +718,9 @@ public class Biblioteca {
 
     // -----Métodos para manejar selección del usuario-------------//
 
+    /**
+     * Método para gestionar a los bibliotecarios
+     */
     public void gestionarBibliotecarios() {
         Scanner scanner = new Scanner(System.in);
         boolean activo = true;
@@ -765,7 +759,9 @@ public class Biblioteca {
         }
     }
     
-
+    /**
+     * Método para gestionar a los estudiantes
+     */
     public void gestionarEstudiantes(){
         Scanner scanner = new Scanner(System.in);
         boolean activo = true;
@@ -804,6 +800,9 @@ public class Biblioteca {
         }
     }
 
+    /**
+     *Método para gestionar los libros
+     */
     public void gestionarLibros(){
         Scanner scanner = new Scanner(System.in);
         boolean activo = true;
@@ -840,6 +839,7 @@ public class Biblioteca {
                 case '5':
                     activo = false;
                     mostrarMensaje("Volviendo al menú principal...");
+                    break;
                 default:
                     mostrarMensaje("Opción no válida. Intente nuevamente.");
                     break;
@@ -847,6 +847,9 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Método para gestionar los prestamos
+     */
     public void gestionarPrestamos(){
         Scanner scanner = new Scanner(System.in);
         boolean activo = true;
@@ -864,13 +867,14 @@ public class Biblioteca {
             switch (opcion) {
                 case '1':
                     crearNuevoPrestamo();
-                    
                     break;
+
                 case '2':
                     mostrarMensaje("Ingrese el codigo del prestamo que desea buscar: ");
                     String codigoBuscar = scanner.nextLine();
                     consultarPrestamo(codigoBuscar);
                     break;
+
                 case '3':
                     mostrarMensaje("Ingrese el codigo del prestamo que desea eliminar: ");
                     String codigoEliminar = scanner.nextLine();
@@ -881,12 +885,13 @@ public class Biblioteca {
                     mostrarMensaje("Ingrese el codigo del prestamo que desea entregar: ");
                     String codigoEntregar = scanner.nextLine();
                     entregarPrestamo(codigoEntregar);
-                break;
+                    break;
                     
                 case '5':
                     activo = false;
                     mostrarMensaje("Volviendo al menú principal...");
                     break;
+
                 default:
                     mostrarMensaje("Opción no válida. Intente nuevamente.");
                     break;
@@ -894,6 +899,9 @@ public class Biblioteca {
         }
     }
 
+    /**
+     * Método para realizar otras acciones
+     */
     public void opcionesAdicionales(){
         Scanner scanner = new Scanner(System.in);
         boolean activo = true;
